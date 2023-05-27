@@ -12,11 +12,84 @@ Public Class Dashboard
 
         End Try
 
+        totalMedsales()
+        totalAdmin()
+        totalEmployee()
+        totalMedicines()
+        totalPatients()
         load_table()
         medload()
         patient()
 
     End Sub
+
+    Sub totalPatients()
+        conn.Open()
+        Dim numPatcmd As New MySqlCommand
+        Dim numPat As String
+        Dim numPattotal As String
+
+        numPat = "Select count(*) from patients_tb"
+        numPatcmd = New MySqlCommand(numPat, conn)
+        numPattotal = numPatcmd.ExecuteScalar()
+
+        numPats.Text = numPattotal
+        conn.Close()
+    End Sub
+    Sub totalMedicines()
+        conn.Open()
+        Dim numMedcmd As New MySqlCommand
+        Dim numMed As String
+        Dim numMedtotal As String
+
+        numMed = "Select count(*) from medinventory_tb"
+        numMedcmd = New MySqlCommand(numMed, conn)
+        numMedtotal = numMedcmd.ExecuteScalar()
+
+        numMeds.Text = numMedtotal
+        conn.Close()
+    End Sub
+    Sub totalEmployee()
+        conn.Open()
+        Dim numEmpcmd As New MySqlCommand
+        Dim numEmp As String
+        Dim numEmptotal As String
+
+        numEmp = "Select count(*) from employee_tb"
+        numEmpcmd = New MySqlCommand(numEmp, conn)
+        numEmptotal = numEmpcmd.ExecuteScalar()
+
+        numEmps.Text = numEmptotal
+        conn.Close()
+    End Sub
+    Sub totalAdmin()
+        conn.Open()
+        Dim numAdmcmd As New MySqlCommand
+        Dim numAdm As String
+        Dim numAdmtotal As String
+
+        numAdm = "Select count(*) from admin_tb"
+        numAdmcmd = New MySqlCommand(numAdm, conn)
+        numAdmtotal = numAdmcmd.ExecuteScalar()
+
+        numAdms.Text = numAdmtotal
+        conn.Close()
+    End Sub
+
+    Sub totalMedsales()
+        conn.Open()
+        Dim medsalecmd As New MySqlCommand
+        Dim medsale As String
+        Dim medsaletotal As String
+
+        medsale = "Select sum(quantity_sold) from medsales_tb"
+        medsalecmd = New MySqlCommand(medsale, conn)
+        medsaletotal = medsalecmd.ExecuteScalar()
+
+        medSales.Text = medsaletotal
+        conn.Close()
+    End Sub
+
 
     Private Sub homeBtn_Click(sender As Object, e As EventArgs) Handles homeBtn.Click
         TabControl1.SelectedTab = TabPage1
@@ -379,6 +452,18 @@ Public Class Dashboard
     End Sub
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
+
+    End Sub
+
+    Private Sub numPats_Click(sender As Object, e As EventArgs) Handles numPats.Click
+
+    End Sub
+
+    Private Sub Guna2ShadowPanel1_Paint(sender As Object, e As PaintEventArgs) Handles Guna2ShadowPanel1.Paint
+
+    End Sub
+
+    Private Sub TabPage1_Click(sender As Object, e As EventArgs) Handles TabPage1.Click
 
     End Sub
 End Class
