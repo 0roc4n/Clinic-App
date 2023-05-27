@@ -6,6 +6,7 @@ Public Class Login
     End Sub
 
     Private Sub loginbtn_Click(sender As Object, e As EventArgs) Handles loginbtn.Click
+
         sql = "Select * from admin_tb where username ='" & unametxtbox.Text & "' and password = '" & passtxtbox.Text & "'"
         connect()
 
